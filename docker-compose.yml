@@ -5,12 +5,11 @@ services:
     container_name: wp_stack_srv
     depends_on:
        - db
-    image: wordpress
+    image: wordpress:4.9.4-apache
     links:
       - wordpress_db:mysql
     ports:
       - 8080:80
-    restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
@@ -23,7 +22,6 @@ services:
   db:
     container_name: wp_stack_db
     image: mariadb
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: wordpress
