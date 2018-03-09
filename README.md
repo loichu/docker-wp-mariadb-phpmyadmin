@@ -89,8 +89,20 @@ Connect to PHPMyAdmin:
 ```
 make perm
 ```
-
-#### WordPress asks for a FTP server
+### cannot open 'wp/wp-content/debug.log' for reading: No such file or directory
+Normally in wp/wp-config.php you should have near line 80 `define('WP_DEBUG', true);`. Replace it by the following:
+```php
+// Show debug logs in wp-content/debug.log
+define('WP_DEBUG', true);
+define( 'WP_DEBUG_DISPLAY', false );
+define( 'WP_DEBUG_LOG', true );
+```
+### make logs-sql shows nothing
+MariaDB has to restart to load the configuration file `db-conf/enable-general-logs.cnf`.
+```
+make down up
+```
+### WordPress asks for a FTP server
 Add the following line to `wp-config.php`:
 ```php
 // Don't download through FTP
