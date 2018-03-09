@@ -3,6 +3,8 @@
 _mysql_group_id_in_docker = 999
 _apache_group_id_in_docker = 33
 
+.PHONY: logs
+
 check-env:
 ifeq (,$(wildcard wp-docker-stack.env))
 	@echo "Please create your .env file first, from .env.sample"
